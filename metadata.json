@@ -1,0 +1,6 @@
+{
+  "name": "Sovereign OS: Animus & Nexus",
+  "description": "A comprehensive sovereign operating system featuring multi-user profiles, 3FA biometric security, decentralized metaverse asset management, and the Animus Void fractal engine.",
+  "requestFramePermissions": ["camera", "microphone", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      ...
+    },
+    "MetaverseAsset": {
+      "title": "Metaverse Asset",
+      "description": "Cryptographic tokens representing virtual land or digital artifacts.",
+      "type": "object",
+      "properties": {
+        "assetId": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "type": { "enum": ["LAND", "ARTIFACT", "NEURAL_SKETCH"] },
+        "coordinates": { "type": "array", "items": { "type": "number" } },
+        "metadata": { "type": "object" },
+        "acquiredAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "MetaverseInteraction": {
+      "title": "Metaverse Interaction",
+      "description": "Real-time state for users in the shared metaverse.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "position": { "type": "object" },
+        "currentActivity": { "type": "string" },
+        "lastSeen": { "type": "string", "format": "date-time" }
+      }
+    },
+    "TelemetrySync": {
+      "title": "Telemetry Sync",
+      "description": "Portability global links for geolocated verification and pattern recognition.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "accuracy": { "type": "number" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "node": { "type": "string" },
+        "verified": { "type": "boolean" }
+      }
+    }
+  },
+  "firestore": {
+    "/profiles/{userId}": {
+      "schema": "UserProfile",
+      "description": "Central user identity and security store."
+    },
+    "/metaverse_presence/{userId}": {
+      "schema": "MetaverseInteraction",
+      "description": "Real-time tracking of inhabitants."
+    },
+    "/telemetry_logs/{logId}": {
+      "schema": "TelemetrySync",
+      "description": "Immutable ledger of geolocated verifications."
+    }
+  }
+}
